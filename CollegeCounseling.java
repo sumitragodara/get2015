@@ -25,19 +25,20 @@ public class CollegeCounseling {
 		System.out.println("Enter no of candidate");
 	
 	 noOfCandidate = scan.nextInt();
-	System.out.println("Enter candidate list according to rank");
+	System.out.println("Enter candidate name  according to rank");
 	for(int i =0; i<noOfCandidate ; i++){
 		queueObject.enQueue(scan.next());                    //enter element into queue using enQueue method
 	}
 	//queueObject.display();
 	System.out.println("Enter  no of available college");          // information about colleges
 	int noOfCollege=scan.nextInt();
-	System.out.println("Enter available college list ");
+	System.out.println("Enter available college name in college  list ");
 	for(int j =0; j<noOfCollege ; j++){
 		listOfColleges.add(scan.next());
 	}
-	System.out.println("Enter available seats in college");
+	
 	for(int k =0; k<noOfCollege ; k++){
+		System.out.println("Enter available seats in college "+listOfColleges.get(k));
 		seatsAvailable.add(scan.nextInt());
 	}
 	int counselingcount=0;
@@ -47,7 +48,8 @@ public class CollegeCounseling {
 		System.out.println("College Name: "+listOfColleges.get(k)+"  no of seats available: "+seatsAvailable.get(k));
 	}
 	System.out.println("select college from list");
-	selectedCollege = scan.next();              
+	selectedCollege = scan.next();  
+	int flag=0;
 	for(int count =0; count < noOfCollege; count++){
 		if(selectedCollege.equalsIgnoreCase(listOfColleges.get(count))){
 			if(seatsAvailable.get(count)>0){
@@ -56,20 +58,23 @@ public class CollegeCounseling {
 				int seat =seatsAvailable.get(count);
 				seatsAvailable.set(count, seat-1);
 				counselingcount++;
+				flag =1;
 			}
-			else {
+		
+		else{
 				System.out.println("seats not available try in next round");
 				queueObject.deleteItem();
 				System.out.println(selectedCollege +" seat not  allocated");
 				counselingcount++;
 			}
 		}
-			else{
+		}
+		if(flag == 0) {
 				System.out.println("Enter valid college name");
 			}
 			
 		
-	}}
+	}
 	System.out.println("no candidate remains in list \n Exit");
 	}catch(InputMismatchException ip){
 		System.out.println("enter integer value\n Exit");
