@@ -1,6 +1,11 @@
-
 import java.util.*;
-
+/*
+ * @ author sumitra
+ * class Heap perform multiple task on heap concept
+ * @param size size of heap array
+ * @param maxSize maximum size of array
+ * @heap[] heap array to store values
+ */
 
 public class Heap {
 	 
@@ -9,7 +14,11 @@ public class Heap {
 	static final int Index =  1;
 	static Scanner scan = new Scanner(System.in);
 	 static int [] Heap;
-	
+	/*
+	 * main method of class heap
+	 * @choice -take from user to perform different operation on heap
+	 * @priority calculate priority of task
+	 */
 	public static void main(String []args){
 		       Heap = new int[maxSize +1];
 		       Heap[0] = Integer.MAX_VALUE; 
@@ -82,13 +91,22 @@ public class Heap {
 			 System.out.println("***Exit***");
 		 }
 	}
-
+/*
+ * this method delete root node of heap
+ * @PARAM delete root of heap
+ * @return deleted item from heap
+ */
 	private int deleteRoot() {
 		int delete = Heap[Index];
 		Heap[Index] = Heap[size--]; 
 		heapify(Index);
 		return delete;
 	}
+	/*
+	 * this method set priorities according to question
+	 * @param priorityOfTask take priority from user 
+	 * @return priority of task
+	 */
 private int setPriority(){
 	
 		System.out.println("Enter the priority of job");
@@ -105,6 +123,10 @@ private int setPriority(){
 		     return priorityOfTask;
                
 	}
+/*
+ * this method heapify  heap
+ * 
+ */
  private void heap() {
 	// TODO Auto-generated method stub
 	for(int position = (size / 2); position >= 1; position--)
@@ -113,7 +135,11 @@ private int setPriority(){
 	}
 }
 
-
+/*
+ * this method use to insert element in the priority queue or heap where root element is treated
+ * @param current is the current node
+ * @param parentnode calculate parent
+ */
 private void insert(int priorityOfTask) {
 	
 	int current = ++size;
@@ -139,22 +165,36 @@ private void insert(int priorityOfTask) {
 	
 
 
-
+/*
+ * method to calculate parent of current node
+ * @return parent
+ */
 	private int parent(int node)
 	{
 		return (node / 2);
 	}
-
+/*
+ * this method to calculate leftchild
+ */
 	private int leftChild(int node)
 	{
 		return (2 * node);
 	}
 	
-	
+	/*
+	 * this method to calculate right child
+	 * 
+	 */
 	private int rightChild(int node)
 	{
 		return ((2 * node) + 1);
 	}
+	
+	/*
+	 * method to heapify a heap
+	 * this method call isLeaf method to check leaf of not if not then check that child is  always less then parent
+	 * use recursion
+	 */
 	private void heapify(int node)
 	{
 		if (!isLeaf(node))
@@ -173,7 +213,10 @@ private void insert(int priorityOfTask) {
 			}
 		}
 	}
-
+/*
+ * method to check node is leaf or internal
+ * return true if leaf otherwise false
+ */
 	private boolean isLeaf(int node) {
 		// TODO Auto-generated method stub
 		if (node >=  (size / 2)  &&  node <= size)
@@ -183,7 +226,9 @@ private void insert(int priorityOfTask) {
 		
 		return false;
 	}
-
+/*
+ * this method swap two elements
+ */
 	private void swap(int node, int current) {
 		int temp;
 		temp = Heap[node];
