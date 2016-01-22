@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  commenter: MyString
+  commentText: MyString
+  todo_id: 
+
+two:
+  commenter: MyString
+  commentText: MyString
+  todo_id: 
